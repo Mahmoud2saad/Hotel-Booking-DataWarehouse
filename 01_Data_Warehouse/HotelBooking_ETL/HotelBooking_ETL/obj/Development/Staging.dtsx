@@ -1,0 +1,2399 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2026 11:26:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-BIT828U"
+  DTS:CreatorName="DESKTOP-BIT828U\Asus"
+  DTS:DTSID="{BE2AEABF-439B-4A2D-9FBF-E61D20F7E730}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{672E2833-F42A-4E83-86BD-2304861CD327}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Booking]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{D37AECA9-8845-4891-A181-B372B2973EF3}"
+      DTS:ObjectName="Booking">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\End To End Tasks\Hotel-Booking-DataWarehouse-BI-main\01_Data_Warehouse\Staging_Data_Sources\booking_data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="hotel"
+              DTS:DTSID="{C98AB817-9027-4B67-B3B4-9C1310CCCD83}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="lead_time"
+              DTS:DTSID="{709D6CDF-23E8-481F-8AC9-C1D02C250516}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="arrival_date_year"
+              DTS:DTSID="{8D422C24-2F34-4F11-8DFD-515BCF9AECEA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="arrival_date_month"
+              DTS:DTSID="{BC9F041F-EE62-43D4-ADA7-CE849BA96484}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="arrival_date_week_number"
+              DTS:DTSID="{4730D116-C8C5-4F2B-A6C8-C9BAE8FEE358}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="arrival_date_day_of_month"
+              DTS:DTSID="{B8275DB0-B1D7-4EB0-8EFB-8661AB99F103}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="stays_in_weekend_nights"
+              DTS:DTSID="{AC3DD0C1-031B-4F65-951E-8E5DD10AD1CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="stays_in_week_nights"
+              DTS:DTSID="{99D87321-0904-4F25-9607-7959E9C9C97E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="adults"
+              DTS:DTSID="{E7A1ABA2-9562-4551-9943-34AF5B4A1B7A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="children"
+              DTS:DTSID="{5F663C8C-90C9-4F8B-A71C-87F41B56B681}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="babies"
+              DTS:DTSID="{A634DCBA-B131-496A-9142-2E3879D78649}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="meal"
+              DTS:DTSID="{2FCDC42C-05FC-4276-AC11-69078153F91A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="market_segment"
+              DTS:DTSID="{0BAFE8A5-2680-4FE0-AF8D-6EF55A1F4EBB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="distribution_channel"
+              DTS:DTSID="{E35C2DA6-42C3-4D85-9CE7-D469723A3192}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="reserved_room_type"
+              DTS:DTSID="{F3E1B5E9-8613-4858-A195-77B72A0FABFA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="assigned_room_type"
+              DTS:DTSID="{0160F158-F362-4C71-B7B8-6E8AECDFA8B9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="deposit_type"
+              DTS:DTSID="{0440954B-8AEE-4E69-A8AD-6CB09EB06926}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="customer_type"
+              DTS:DTSID="{CD375D4A-4642-46A9-A4DB-A4ACE56D2A28}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{BE90742E-CECB-48F6-9E7E-878D24297424}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\End To End Tasks\Hotel-Booking-DataWarehouse-BI-main\01_Data_Warehouse\Staging_Data_Sources\reservation_status_data.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[guest]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{192BD493-09CA-480E-886D-B10F86AFB099}"
+      DTS:ObjectName="guest">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\End To End Tasks\Hotel-Booking-DataWarehouse-BI-main\01_Data_Warehouse\Staging_Data_Sources\guest_data.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="name"
+              DTS:DTSID="{8605BE38-D8DA-4339-BAC5-95C580B14714}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="email"
+              DTS:DTSID="{E8C89C6C-DE8B-44D0-86E0-210E41798402}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="phone-number"
+              DTS:DTSID="{EC601B12-63BA-408A-B78D-3DF607C3C85D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="credit_card"
+              DTS:DTSID="{4C70CBA6-C6FF-4E8F-B043-F991781D09D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="country"
+              DTS:DTSID="{B57B1463-ED1D-4516-AD35-A1F488943135}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{05CA4986-D232-4586-943E-0EA39A7361A7}"
+      DTS:ObjectName="MEDS\SQLEXPRESS.HotelDW_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=MEDS\SQLEXPRESS;Initial Catalog=HotelDW_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{05CA4986-D232-4586-943E-0EA39A7361A7}MEDS\SQLEXPRESS.HotelDW_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load stg_Booking"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4624AA67-545A-4289-AB37-3617A42053E9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load stg_Booking"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load stg_Booking\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load stg_Booking\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Booking]"
+                  connectionManagerRefId="Package.ConnectionManagers[Booking]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[hotel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[hotel]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[hotel]"
+                      name="hotel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[lead_time]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lead_time]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[lead_time]"
+                      name="lead_time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_year]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_year]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_year]"
+                      name="arrival_date_year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_month]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_month]"
+                      length="20"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_month]"
+                      name="arrival_date_month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_week_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_week_number]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_week_number]"
+                      name="arrival_date_week_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_day_of_month]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_day_of_month]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_day_of_month]"
+                      name="arrival_date_day_of_month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[stays_in_weekend_nights]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[stays_in_weekend_nights]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[stays_in_weekend_nights]"
+                      name="stays_in_weekend_nights"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[stays_in_week_nights]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[stays_in_week_nights]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[stays_in_week_nights]"
+                      name="stays_in_week_nights"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[adults]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[adults]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[adults]"
+                      name="adults"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[children]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[children]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[children]"
+                      name="children"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[babies]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[babies]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[babies]"
+                      name="babies"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[meal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[meal]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[meal]"
+                      name="meal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[market_segment]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[market_segment]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[market_segment]"
+                      name="market_segment"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[distribution_channel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[distribution_channel]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[distribution_channel]"
+                      name="distribution_channel"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[reserved_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[reserved_room_type]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[reserved_room_type]"
+                      name="reserved_room_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[assigned_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[assigned_room_type]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[assigned_room_type]"
+                      name="assigned_room_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[deposit_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[deposit_type]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[deposit_type]"
+                      name="deposit_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[customer_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[customer_type]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[customer_type]"
+                      name="customer_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[hotel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="hotel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[lead_time]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="lead_time" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="arrival_date_year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="arrival_date_month" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_week_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="arrival_date_week_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[arrival_date_day_of_month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="arrival_date_day_of_month" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[stays_in_weekend_nights]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="stays_in_weekend_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[stays_in_week_nights]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="stays_in_week_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[adults]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="adults" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[children]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="children" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[babies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="babies" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[meal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="meal" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[market_segment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="market_segment" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[distribution_channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="distribution_channel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[reserved_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="reserved_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[assigned_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="assigned_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[deposit_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="deposit_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[customer_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customer_type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load stg_Booking\OLE DB Destination 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_Booking]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[hotel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="hotel"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[hotel]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[hotel]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[lead_time]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="lead_time"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[lead_time]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[lead_time]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[arrival_date_year]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="arrival_date_year"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_year]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_year]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[arrival_date_month]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="arrival_date_month"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_month]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_month]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[arrival_date_week_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="arrival_date_week_number"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_week_number]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_week_number]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[arrival_date_day_of_month]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="arrival_date_day_of_month"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_day_of_month]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[arrival_date_day_of_month]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[stays_in_weekend_nights]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="stays_in_weekend_nights"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_weekend_nights]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[stays_in_weekend_nights]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[stays_in_week_nights]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="stays_in_week_nights"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_week_nights]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[stays_in_week_nights]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[adults]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="adults"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[adults]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[adults]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[children]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="children"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[children]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[children]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[babies]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="babies"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[babies]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[babies]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[meal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="meal"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[meal]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[meal]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[market_segment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="market_segment"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[market_segment]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[market_segment]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[distribution_channel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="distribution_channel"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[distribution_channel]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[distribution_channel]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[reserved_room_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="reserved_room_type"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[reserved_room_type]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[reserved_room_type]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[assigned_room_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="assigned_room_type"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[assigned_room_type]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[assigned_room_type]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[deposit_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="deposit_type"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[deposit_type]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[deposit_type]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[customer_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customer_type"
+                      externalMetadataColumnId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[customer_type]"
+                      lineageId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output].Columns[customer_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[stg_booking_id]"
+                      dataType="i4"
+                      name="stg_booking_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[hotel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="hotel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[lead_time]"
+                      dataType="i4"
+                      name="lead_time" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_year]"
+                      dataType="i4"
+                      name="arrival_date_year" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="arrival_date_month" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_week_number]"
+                      dataType="i4"
+                      name="arrival_date_week_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[arrival_date_day_of_month]"
+                      dataType="i4"
+                      name="arrival_date_day_of_month" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_weekend_nights]"
+                      dataType="i4"
+                      name="stays_in_weekend_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_week_nights]"
+                      dataType="i4"
+                      name="stays_in_week_nights" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[adults]"
+                      dataType="i4"
+                      name="adults" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[children]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="children" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[babies]"
+                      dataType="i4"
+                      name="babies" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[meal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="meal" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[market_segment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="market_segment" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[distribution_channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="distribution_channel" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[reserved_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="reserved_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[assigned_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="assigned_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[deposit_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="deposit_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[customer_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customer_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[etl_load_date]"
+                      dataType="dbTimeStamp"
+                      name="etl_load_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load stg_Booking.Paths[Flat File Source Output]"
+              endId="Package\DFT - Load stg_Booking\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT - Load stg_Booking\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load stg_Guest"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{02CF6B34-A019-43A2-869E-0D36A1816CAF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load stg_Guest"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load stg_Guest\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load stg_Guest\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[guest]"
+                  connectionManagerRefId="Package.ConnectionManagers[guest]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[name]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[name]"
+                      name="name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[email]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[phone-number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[phone-number]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[phone-number]"
+                      name="phone-number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[credit_card]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[credit_card]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[credit_card]"
+                      name="credit_card"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      length="50"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[phone-number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="phone-number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[credit_card]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_card" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="country" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load stg_Guest\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_Guest]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load stg_Guest\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="name"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[name]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[email]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[credit_card]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="credit_card"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[credit_card]"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[credit_card]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[phone-number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="phone-number"
+                      externalMetadataColumnId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[phone_number]"
+                      lineageId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output].Columns[phone-number]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stg_guest_id]"
+                      dataType="i4"
+                      name="stg_guest_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[phone_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="phone_number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[credit_card]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="credit_card" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[etl_load_date]"
+                      dataType="dbTimeStamp"
+                      name="etl_load_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load stg_Guest\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Guest\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_Guest\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_Guest\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load stg_Guest.Paths[Flat File Source Output]"
+              endId="Package\DFT - Load stg_Guest\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT - Load stg_Guest\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Load stg_ReservationStatus"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9D3E6149-685D-417C-8918-FC5EE9351BAA}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Load stg_ReservationStatus"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Load stg_ReservationStatus\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[is_canceled]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[is_canceled]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[is_canceled]"
+                      name="is_canceled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[adr]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[adr]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[adr]"
+                      name="adr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[required_car_parking_spaces]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[required_car_parking_spaces]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[required_car_parking_spaces]"
+                      name="required_car_parking_spaces"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[total_of_special_requests]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[total_of_special_requests]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[total_of_special_requests]"
+                      name="total_of_special_requests"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[reservation_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[reservation_status]"
+                      length="255"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[reservation_status]"
+                      name="reservation_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[reservation_status_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[reservation_status_date]"
+                      length="255"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[reservation_status_date]"
+                      name="reservation_status_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[is_canceled]"
+                      dataType="r8"
+                      name="is_canceled" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[adr]"
+                      dataType="r8"
+                      name="adr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[required_car_parking_spaces]"
+                      dataType="r8"
+                      name="required_car_parking_spaces" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[total_of_special_requests]"
+                      dataType="r8"
+                      name="total_of_special_requests" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[reservation_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="reservation_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].ExternalColumns[reservation_status_date]"
+                      dataType="wstr"
+                      length="255"
+                      name="reservation_status_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[is_canceled]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[is_canceled]"
+                      name="is_canceled" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[adr]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[adr]"
+                      name="adr" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[required_car_parking_spaces]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[required_car_parking_spaces]"
+                      name="required_car_parking_spaces" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[total_of_special_requests]"
+                      dataType="r8"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[total_of_special_requests]"
+                      name="total_of_special_requests" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[reservation_status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[reservation_status]"
+                      name="reservation_status" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[reservation_status_date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[reservation_status_date]"
+                      name="reservation_status_date" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_ReservationStatus]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_canceled]"
+                      cachedDataType="r8"
+                      cachedName="is_canceled"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_canceled]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[is_canceled]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[adr]"
+                      cachedDataType="r8"
+                      cachedName="adr"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[adr]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[adr]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[required_car_parking_spaces]"
+                      cachedDataType="r8"
+                      cachedName="required_car_parking_spaces"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[required_car_parking_spaces]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[required_car_parking_spaces]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[total_of_special_requests]"
+                      cachedDataType="r8"
+                      cachedName="total_of_special_requests"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_of_special_requests]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[total_of_special_requests]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reservation_status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="reservation_status"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[reservation_status]" />
+                    <inputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reservation_status_date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="reservation_status_date"
+                      externalMetadataColumnId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status_date]"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output].Columns[reservation_status_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stg_reservation_id]"
+                      dataType="i4"
+                      name="stg_reservation_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_canceled]"
+                      dataType="bool"
+                      name="is_canceled" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[adr]"
+                      dataType="r8"
+                      name="adr" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[required_car_parking_spaces]"
+                      dataType="i4"
+                      name="required_car_parking_spaces" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_of_special_requests]"
+                      dataType="i4"
+                      name="total_of_special_requests" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="reservation_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="reservation_status_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[etl_load_date]"
+                      dataType="dbTimeStamp"
+                      name="etl_load_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Load stg_ReservationStatus.Paths[Excel Source Output]"
+              endId="Package\DFT - Load stg_ReservationStatus\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\DFT - Load stg_ReservationStatus\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Staging Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1844F7B6-6967-4A00-88D8-97522F3067A2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Staging Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{05CA4986-D232-4586-943E-0EA39A7361A7}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.stg_ReservationStatus;&#xA;TRUNCATE TABLE dbo.stg_Booking;&#xA;TRUNCATE TABLE dbo.stg_Guest;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AEFFA9CA-A3E3-49A7-91B4-17462482AB8F}"
+      DTS:From="Package\Truncate Staging Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT - Load stg_ReservationStatus" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D25B8C71-7339-4FB0-B163-6A9C5B0CD622}"
+      DTS:From="Package\Truncate Staging Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT - Load stg_Booking" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{5CC627D0-0D5B-41C6-8AB3-75ED7937D878}"
+      DTS:From="Package\Truncate Staging Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT - Load stg_Guest" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\DFT - Load stg_Booking"
+          TopLeft="446.666642261877,93.5999993491173" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\DFT - Load stg_Guest"
+          TopLeft="452.499975276491,155.999998915196" />
+        <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\DFT - Load stg_ReservationStatus"
+          TopLeft="444.999975686273,236.599998354713" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Truncate Staging Tables"
+          TopLeft="87.499995219211,144.733332326876" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="183.999995219211,186.733332326876">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="380.499980467062,49.866666027837"
+              Start="0,0"
+              End="380.499980467062,42.366666027837">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.9333330139185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.9333330139185"
+                    Point2="0,24.9333330139185"
+                    Point3="4,24.9333330139185" />
+                  <mssgle:LineSegment
+                    End="376.499980467062,24.9333330139185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="376.499980467062,24.9333330139185"
+                    Point2="380.499980467062,24.9333330139185"
+                    Point3="380.499980467062,28.9333330139185" />
+                  <mssgle:LineSegment
+                    End="380.499980467062,42.366666027837" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="280.499995219211,160.066665660209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="166.166647042666,-45.466666311092"
+              Start="0,0"
+              End="158.666647042666,-45.466666311092">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.1253739813086,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.1253739813086,0"
+                    Point2="70.1253739813086,0"
+                    Point3="70.1253739813086,-4" />
+                  <mssgle:LineSegment
+                    End="70.1253739813086,-41.466666311092" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.1253739813086,-41.466666311092"
+                    Point2="70.1253739813086,-45.466666311092"
+                    Point3="74.1253739813086,-45.466666311092" />
+                  <mssgle:LineSegment
+                    End="158.666647042666,-45.466666311092" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="280.499995219211,174.199998954369">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="171.99998005728,0"
+              Start="0,0"
+              End="164.49998005728,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="164.49998005728,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Load stg_Booking">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\DFT - Load stg_Booking\OLE DB Destination 1"
+          TopLeft="470.999992981553,125.999998122454" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\DFT - Load stg_Booking\Flat File Source"
+          TopLeft="101.999998480082,94.9999985843897" />
+        <EdgeLayout
+          Id="Package\DFT - Load stg_Booking.Paths[Flat File Source Output]"
+          TopLeft="252.999998480082,115.99999858439">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="217.999994501471,30.9999995380643"
+              Start="0,0"
+              End="210.499994501471,30.9999995380643">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="104.999997250736,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="104.999997250736,0"
+                    Point2="108.999997250736,0"
+                    Point3="108.999997250736,4" />
+                  <mssgle:LineSegment
+                    End="108.999997250736,26.9999995380643" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108.999997250736,26.9999995380643"
+                    Point2="108.999997250736,30.9999995380643"
+                    Point3="112.999997250736,30.9999995380643" />
+                  <mssgle:LineSegment
+                    End="210.499994501471,30.9999995380643" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load stg_Booking\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - Load stg_Guest">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT - Load stg_Guest\OLE DB Destination"
+          TopLeft="459.999993145466,111.99999833107" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\DFT - Load stg_Guest\Flat File Source"
+          TopLeft="169.999997466803,104.999998435378" />
+        <EdgeLayout
+          Id="Package\DFT - Load stg_Guest.Paths[Flat File Source Output]"
+          TopLeft="320.999997466803,129.499998383224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.999995678663,0"
+              Start="0,0"
+              End="131.499995678663,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="131.499995678663,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load stg_Guest\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - Load stg_ReservationStatus">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT - Load stg_ReservationStatus\OLE DB Destination"
+          TopLeft="519.999992251396,168.999997481704" />
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\DFT - Load stg_ReservationStatus\Excel Source"
+          TopLeft="274.999995902181,150.999997749925" />
+        <EdgeLayout
+          Id="Package\DFT - Load stg_ReservationStatus.Paths[Excel Source Output]"
+          TopLeft="414.999995902181,171.799997749925">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.999996349216,17.9999997317791"
+              Start="0,0"
+              End="97.4999963492156,17.9999997317791">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="48.4999981746078,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.4999981746078,0"
+                    Point2="52.4999981746078,0"
+                    Point3="52.4999981746078,4" />
+                  <mssgle:LineSegment
+                    End="52.4999981746078,13.9999997317791" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.4999981746078,13.9999997317791"
+                    Point2="52.4999981746078,17.9999997317791"
+                    Point3="56.4999981746078,17.9999997317791" />
+                  <mssgle:LineSegment
+                    End="97.4999963492156,17.9999997317791" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load stg_ReservationStatus\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Load stg_ReservationStatus\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

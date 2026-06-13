@@ -1,0 +1,2488 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/1/2026 1:45:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-BIT828U"
+  DTS:CreatorName="DESKTOP-BIT828U\Asus"
+  DTS:DTSID="{E2091E93-7CCF-496E-8800-3349D04BC8AB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Fact"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{52E38C86-9CD7-4EAE-9B09-06E4742C1E08}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D44C363D-A767-4ABB-91B8-AF19230E73FB}"
+      DTS:ObjectName="MEDS\SQLEXPRESS.HotelDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=MEDS\SQLEXPRESS;Initial Catalog=HotelDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Fact-{D44C363D-A767-4ABB-91B8-AF19230E73FB}MEDS\SQLEXPRESS.HotelDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C7D0A429-4ABC-4BFE-9BB0-3A8B2DEDD75E}"
+      DTS:ObjectName="MEDS\SQLEXPRESS.HotelDW_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=MEDS\SQLEXPRESS;Initial Catalog=HotelDW_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Fact-{C7D0A429-4ABC-4BFE-9BB0-3A8B2DEDD75E}MEDS\SQLEXPRESS.HotelDW_Staging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Creating The Fact Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7B86997C-A4CB-431A-85AC-AEB6F40056EC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Creating The Fact Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Creating The Fact Table\Agent_key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Agent_key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT agent_key, market_segment, distribution_channel, deposit_type, customer_type FROM DimAgent</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT agent_key, market_segment, distribution_channel, deposit_type, customer_type FROM DimAgent) [refTable]
+where [refTable].[market_segment] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="agent_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="market_segment" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="distribution_channel" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="deposit_type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="customer_type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[market_segment]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Creating The Fact Table\Agent_key.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Creating The Fact Table\Agent_key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\Agent_key.Inputs[Lookup Input].Columns[market_segment]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="market_segment"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[market_segment]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">market_segment</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Agent_key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Match Output].Columns[agent_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Match Output].Columns[agent_key]"
+                      name="agent_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">agent_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Agent_key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Creating The Fact Table\Agent_key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Creating The Fact Table\Date_Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Date_Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT date_key, year, month_number, day_of_month FROM DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT date_key, year, month_number, day_of_month FROM DimDate) [refTable]
+where [refTable].[year] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month_number" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="day_of_month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_year]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Creating The Fact Table\Date_Key.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Creating The Fact Table\Date_Key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\Date_Key.Inputs[Lookup Input].Columns[arrival_date_year]"
+                      cachedDataType="i4"
+                      cachedName="arrival_date_year"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_year]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">year</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Date_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Match Output].Columns[date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Match Output].Columns[date_key]"
+                      name="date_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">date_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Date_Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Creating The Fact Table\Date_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Creating The Fact Table\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Creating The Fact Table\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Creating The Fact Table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Output].Columns[accm_txn_create_time]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Output].Columns[accm_txn_create_time]"
+                      name="accm_txn_create_time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Creating The Fact Table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Creating The Fact Table\Guset_Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Guset_Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT guest_key, guest_id
+FROM DimGuest
+WHERE is_current = 1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT guest_key, guest_id
+FROM DimGuest
+WHERE is_current = 1) [refTable]
+where [refTable].[guest_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="guest_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="guest_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stg_guest_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Creating The Fact Table\Guset_Key.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Creating The Fact Table\Guset_Key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\Guset_Key.Inputs[Lookup Input].Columns[stg_guest_id]"
+                      cachedDataType="i4"
+                      cachedName="stg_guest_id"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stg_guest_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">guest_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Guset_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Match Output].Columns[guest_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Match Output].Columns[guest_key]"
+                      name="guest_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">guest_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Guset_Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Creating The Fact Table\Guset_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Creating The Fact Table\Hotel_Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Hotel_Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT hotel_key, hotel_name FROM DimHotel</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT hotel_key, hotel_name FROM DimHotel) [refTable]
+where [refTable].[hotel_name] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="hotel_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hotel_name" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[hotel]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Creating The Fact Table\Hotel_Key.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Creating The Fact Table\Hotel_Key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\Hotel_Key.Inputs[Lookup Input].Columns[hotel]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="hotel"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[hotel]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">hotel_name</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Hotel_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Match Output].Columns[hotel_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Match Output].Columns[hotel_key]"
+                      name="hotel_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">hotel_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Hotel_Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Creating The Fact Table\Hotel_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Creating The Fact Table\Joins"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Joins"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_Booking]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    g.stg_guest_id,
+    b.hotel,
+    b.lead_time,
+    b.arrival_date_year,
+    b.arrival_date_month,
+    b.arrival_date_week_number,
+    b.arrival_date_day_of_month,
+    b.stays_in_weekend_nights,
+    b.stays_in_week_nights,
+    b.adults,
+    b.children,
+    b.babies,
+    b.meal,
+    b.market_segment,
+    b.distribution_channel,
+    b.reserved_room_type,
+    b.assigned_room_type,
+    b.deposit_type,
+    b.customer_type,
+    r.is_canceled,
+    r.adr,
+    r.required_car_parking_spaces,
+    r.total_of_special_requests,
+    r.reservation_status,
+    r.reservation_status_date
+FROM (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY stg_booking_id) AS rn
+    FROM HotelDW_Staging.dbo.stg_Booking
+) b
+INNER JOIN (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY stg_reservation_id) AS rn
+    FROM HotelDW_Staging.dbo.stg_ReservationStatus
+) r ON b.rn = r.rn
+INNER JOIN (
+    SELECT stg_guest_id, ROW_NUMBER() OVER (ORDER BY stg_guest_id) AS rn
+    FROM HotelDW_Staging.dbo.stg_Guest
+) g ON b.rn = g.rn</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Creating The Fact Table\Joins.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[hotel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[hotel]"
+                      length="100"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[hotel]"
+                      name="hotel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[lead_time]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[lead_time]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[lead_time]"
+                      name="lead_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_year]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_year]"
+                      name="arrival_date_year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_month]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_month]"
+                      length="20"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_month]"
+                      name="arrival_date_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_week_number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_week_number]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_week_number]"
+                      name="arrival_date_week_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_day_of_month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_day_of_month]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[arrival_date_day_of_month]"
+                      name="arrival_date_day_of_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stays_in_weekend_nights]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[stays_in_weekend_nights]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stays_in_weekend_nights]"
+                      name="stays_in_weekend_nights"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stays_in_week_nights]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[stays_in_week_nights]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stays_in_week_nights]"
+                      name="stays_in_week_nights"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[adults]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[adults]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[adults]"
+                      name="adults"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[children]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[children]"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[children]"
+                      name="children"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[babies]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[babies]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[babies]"
+                      name="babies"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[meal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[meal]"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[meal]"
+                      name="meal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[market_segment]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[market_segment]"
+                      length="100"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[market_segment]"
+                      name="market_segment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[distribution_channel]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[distribution_channel]"
+                      length="100"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[distribution_channel]"
+                      name="distribution_channel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reserved_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[reserved_room_type]"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reserved_room_type]"
+                      name="reserved_room_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[assigned_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[assigned_room_type]"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[assigned_room_type]"
+                      name="assigned_room_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[deposit_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[deposit_type]"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[deposit_type]"
+                      name="deposit_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[customer_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[customer_type]"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[customer_type]"
+                      name="customer_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[is_canceled]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[is_canceled]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[is_canceled]"
+                      name="is_canceled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[adr]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[adr]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[adr]"
+                      name="adr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[required_car_parking_spaces]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[required_car_parking_spaces]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[required_car_parking_spaces]"
+                      name="required_car_parking_spaces"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[total_of_special_requests]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[total_of_special_requests]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[total_of_special_requests]"
+                      name="total_of_special_requests"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reservation_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[reservation_status]"
+                      length="255"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reservation_status]"
+                      name="reservation_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reservation_status_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[reservation_status_date]"
+                      length="10"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reservation_status_date]"
+                      name="reservation_status_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stg_guest_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[stg_guest_id]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stg_guest_id]"
+                      name="stg_guest_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[hotel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="hotel" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[lead_time]"
+                      dataType="i4"
+                      name="lead_time" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_year]"
+                      dataType="i4"
+                      name="arrival_date_year" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="arrival_date_month" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_week_number]"
+                      dataType="i4"
+                      name="arrival_date_week_number" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[arrival_date_day_of_month]"
+                      dataType="i4"
+                      name="arrival_date_day_of_month" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[stays_in_weekend_nights]"
+                      dataType="i4"
+                      name="stays_in_weekend_nights" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[stays_in_week_nights]"
+                      dataType="i4"
+                      name="stays_in_week_nights" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[adults]"
+                      dataType="i4"
+                      name="adults" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[children]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="children" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[babies]"
+                      dataType="i4"
+                      name="babies" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[meal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="meal" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[market_segment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="market_segment" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[distribution_channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="distribution_channel" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[reserved_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="reserved_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[assigned_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="assigned_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[deposit_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="deposit_type" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[customer_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customer_type" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[is_canceled]"
+                      dataType="bool"
+                      name="is_canceled" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[adr]"
+                      dataType="r8"
+                      name="adr" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[required_car_parking_spaces]"
+                      dataType="i4"
+                      name="required_car_parking_spaces" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[total_of_special_requests]"
+                      dataType="i4"
+                      name="total_of_special_requests" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[reservation_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="reservation_status" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[reservation_status_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="reservation_status_date" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].ExternalColumns[stg_guest_id]"
+                      dataType="i4"
+                      name="stg_guest_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[stg_guest_id]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[stg_guest_id]"
+                      name="stg_guest_id" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[hotel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[hotel]"
+                      name="hotel" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[lead_time]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[lead_time]"
+                      name="lead_time" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_year]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_year]"
+                      name="arrival_date_year" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_month]"
+                      name="arrival_date_month" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_week_number]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_week_number]"
+                      name="arrival_date_week_number" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_day_of_month]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[arrival_date_day_of_month]"
+                      name="arrival_date_day_of_month" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[stays_in_weekend_nights]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[stays_in_weekend_nights]"
+                      name="stays_in_weekend_nights" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[stays_in_week_nights]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[stays_in_week_nights]"
+                      name="stays_in_week_nights" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[adults]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[adults]"
+                      name="adults" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[children]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[children]"
+                      name="children" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[babies]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[babies]"
+                      name="babies" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[meal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[meal]"
+                      name="meal" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[market_segment]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[market_segment]"
+                      name="market_segment" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[distribution_channel]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[distribution_channel]"
+                      name="distribution_channel" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[reserved_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[reserved_room_type]"
+                      name="reserved_room_type" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[assigned_room_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[assigned_room_type]"
+                      name="assigned_room_type" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[deposit_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[deposit_type]"
+                      name="deposit_type" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[customer_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[customer_type]"
+                      name="customer_type" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[is_canceled]"
+                      dataType="bool"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[is_canceled]"
+                      name="is_canceled" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[adr]"
+                      dataType="r8"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[adr]"
+                      name="adr" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[required_car_parking_spaces]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[required_car_parking_spaces]"
+                      name="required_car_parking_spaces" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[total_of_special_requests]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[total_of_special_requests]"
+                      name="total_of_special_requests" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[reservation_status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[reservation_status]"
+                      name="reservation_status" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[reservation_status_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[reservation_status_date]"
+                      name="reservation_status_date" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Creating The Fact Table\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactBooking]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Creating The Fact Table\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[lead_time]"
+                      cachedDataType="i4"
+                      cachedName="lead_time"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lead_time]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[lead_time]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stays_in_week_nights]"
+                      cachedDataType="i4"
+                      cachedName="stays_in_week_nights"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_week_nights]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stays_in_week_nights]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[stays_in_weekend_nights]"
+                      cachedDataType="i4"
+                      cachedName="stays_in_weekend_nights"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_weekend_nights]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[stays_in_weekend_nights]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[adults]"
+                      cachedDataType="i4"
+                      cachedName="adults"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[adults]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[adults]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[children]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="children"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[children]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[children]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[babies]"
+                      cachedDataType="i4"
+                      cachedName="babies"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[babies]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[babies]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[is_canceled]"
+                      cachedDataType="bool"
+                      cachedName="is_canceled"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_canceled]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[is_canceled]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[adr]"
+                      cachedDataType="r8"
+                      cachedName="adr"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[adr]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[adr]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[required_car_parking_spaces]"
+                      cachedDataType="i4"
+                      cachedName="required_car_parking_spaces"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[required_car_parking_spaces]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[required_car_parking_spaces]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[total_of_special_requests]"
+                      cachedDataType="i4"
+                      cachedName="total_of_special_requests"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_of_special_requests]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[total_of_special_requests]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reservation_status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="reservation_status"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reservation_status]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[reservation_status_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="reservation_status_date"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status_date]"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reservation_status_date]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[hotel_key]"
+                      cachedDataType="i4"
+                      cachedName="hotel_key"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hotel_key]"
+                      lineageId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Match Output].Columns[hotel_key]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[agent_key]"
+                      cachedDataType="i4"
+                      cachedName="agent_key"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[agent_key]"
+                      lineageId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Match Output].Columns[agent_key]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[room_key]"
+                      cachedDataType="i4"
+                      cachedName="room_key"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[room_key]"
+                      lineageId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Match Output].Columns[room_key]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_key]"
+                      cachedDataType="i4"
+                      cachedName="date_key"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      lineageId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Match Output].Columns[date_key]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[accm_txn_create_time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="accm_txn_create_time"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_create_time]"
+                      lineageId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Output].Columns[accm_txn_create_time]" />
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[guest_key]"
+                      cachedDataType="i4"
+                      cachedName="guest_key"
+                      externalMetadataColumnId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[guest_key]"
+                      lineageId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Match Output].Columns[guest_key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[booking_key]"
+                      dataType="i4"
+                      name="booking_key" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[guest_key]"
+                      dataType="i4"
+                      name="guest_key" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[hotel_key]"
+                      dataType="i4"
+                      name="hotel_key" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[room_key]"
+                      dataType="i4"
+                      name="room_key" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[agent_key]"
+                      dataType="i4"
+                      name="agent_key" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[lead_time]"
+                      dataType="i4"
+                      name="lead_time" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_weekend_nights]"
+                      dataType="i4"
+                      name="stays_in_weekend_nights" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[stays_in_week_nights]"
+                      dataType="i4"
+                      name="stays_in_week_nights" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[adults]"
+                      dataType="i4"
+                      name="adults" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[children]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="children" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[babies]"
+                      dataType="i4"
+                      name="babies" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[is_canceled]"
+                      dataType="bool"
+                      name="is_canceled" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[adr]"
+                      dataType="r8"
+                      name="adr" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[required_car_parking_spaces]"
+                      dataType="i4"
+                      name="required_car_parking_spaces" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_of_special_requests]"
+                      dataType="i4"
+                      name="total_of_special_requests" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="reservation_status" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[reservation_status_date]"
+                      dataType="wstr"
+                      length="50"
+                      name="reservation_status_date" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_create_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_create_time" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_complete_time" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[txn_process_time_hours]"
+                      dataType="r8"
+                      name="txn_process_time_hours" />
+                    <externalMetadataColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[etl_load_date]"
+                      dataType="dbTimeStamp"
+                      name="etl_load_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Creating The Fact Table\Room_Key"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Room_Key"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT room_key, reserved_room_type, assigned_room_type, meal FROM DimRoom</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT room_key, reserved_room_type, assigned_room_type, meal FROM DimRoom) [refTable]
+where [refTable].[reserved_room_type] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="room_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="reserved_room_type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="assigned_room_type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="meal" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reserved_room_type]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Creating The Fact Table\Room_Key.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MEDS\SQLEXPRESS.HotelDW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Creating The Fact Table\Room_Key.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Creating The Fact Table\Room_Key.Inputs[Lookup Input].Columns[reserved_room_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="reserved_room_type"
+                      lineageId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output].Columns[reserved_room_type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">reserved_room_type</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Room_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Match Output].Columns[room_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Match Output].Columns[room_key]"
+                      name="room_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">room_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Creating The Fact Table\Room_Key.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Creating The Fact Table\Room_Key.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Creating The Fact Table.Paths[Derived Column Output]"
+              endId="Package\Creating The Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Creating The Fact Table\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Creating The Fact Table.Paths[Lookup Match Output]"
+              endId="Package\Creating The Fact Table\Guset_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Creating The Fact Table\Hotel_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Creating The Fact Table.Paths[Lookup Match Output1]"
+              endId="Package\Creating The Fact Table\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Creating The Fact Table\Date_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Creating The Fact Table.Paths[Lookup Match Output2]"
+              endId="Package\Creating The Fact Table\Room_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Creating The Fact Table\Guset_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Creating The Fact Table.Paths[Lookup Match Output3]"
+              endId="Package\Creating The Fact Table\Agent_key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Creating The Fact Table\Room_Key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Creating The Fact Table.Paths[Lookup Match Output4]"
+              endId="Package\Creating The Fact Table\Date_Key.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Creating The Fact Table\Agent_key.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Creating The Fact Table.Paths[OLE DB Source Output]"
+              endId="Package\Creating The Fact Table\Hotel_Key.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Creating The Fact Table\Joins.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ABB1FEBA-64A5-440D-A0C7-1E3E19C6A27E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D44C363D-A767-4ABB-91B8-AF19230E73FB}"
+          SQLTask:SqlStatementSource="USE HotelDW;&#xA;DELETE FROM DimHotel;&#xA;DBCC CHECKIDENT ('DimHotel', RESEED, 0);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{06C1360A-E044-4169-9715-9CF2BD0EA6A4}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Creating The Fact Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{508481F2-DDED-47F0-BED9-78AB1B1620C4}"
+      DTS:EventID="-2088853336"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{C0373230-3563-411C-AAF4-FE3F269D5124}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Execute SQL Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2615478E-00C8-4563-9EF7-B346C4C20F98}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{B8A9B847-1698-4253-AF16-34C9CBE82451}"
+              SQLTask:SqlStatementSource="INSERT INTO ETL_ErrorLog&#xA;(ErrorMessage, ErrorTime, PackageName)&#xA;VALUES (?, GETDATE(), ?)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="2" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\Creating The Fact Table"
+          TopLeft="226.785702705636,189.799999312198" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="105.714285939324,45.8823529009588" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="186.914285939324,87.4823529009588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135.471416766313,102.317646411239"
+              Start="0,0"
+              End="135.471416766313,94.8176464112387">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.1588232056194" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.1588232056194"
+                    Point2="0,51.1588232056194"
+                    Point3="4,51.1588232056194" />
+                  <mssgle:LineSegment
+                    End="131.471416766313,51.1588232056194" />
+                  <mssgle:CubicBezierSegment
+                    Point1="131.471416766313,51.1588232056194"
+                    Point2="135.471416766313,51.1588232056194"
+                    Point3="135.471416766313,55.1588232056194" />
+                  <mssgle:LineSegment
+                    End="135.471416766313,94.8176464112387" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package.EventHandlers[OnError]\Execute SQL Task"
+          TopLeft="359,34" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Creating The Fact Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Creating The Fact Table\Room_Key"
+          TopLeft="586.547579093334,217.074508433833" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\Creating The Fact Table\Date_Key"
+          TopLeft="901.33328438716,280.233331422872" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Creating The Fact Table\Guset_Key"
+          TopLeft="796.130913393172,99.7715678900341" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Creating The Fact Table\Derived Column"
+          TopLeft="989.16661616888,166.833331975681" />
+        <NodeLayout
+          Size="101.6,41.6"
+          Id="Package\Creating The Fact Table\Joins"
+          TopLeft="125.357133000667,212.45228685824" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Creating The Fact Table\Hotel_Key"
+          TopLeft="577.380913164038,37.7127448648355" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Creating The Fact Table\OLE DB Destination"
+          TopLeft="978.333279879559,43.3333331043191" />
+        <NodeLayout
+          Size="128,41.6"
+          Id="Package\Creating The Fact Table\Agent_key"
+          TopLeft="704.761864870045,347.450324893215" />
+        <EdgeLayout
+          Id="Package\Creating The Fact Table.Paths[Lookup Match Output4]"
+          TopLeft="788.761864870045,347.450324893215">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="174.171419517115,-25.6169934703425"
+              Start="0,0"
+              End="174.171419517115,-18.1169934703425">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-6.43655289532472" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-6.43655289532472"
+                    Point2="0,-10.4365528953247"
+                    Point3="4,-10.4365528953247" />
+                  <mssgle:LineSegment
+                    End="170.171419517115,-10.4365528953247" />
+                  <mssgle:CubicBezierSegment
+                    Point1="170.171419517115,-10.4365528953247"
+                    Point2="174.171419517115,-10.4365528953247"
+                    Point3="174.171419517115,-14.4365528953247" />
+                  <mssgle:LineSegment
+                    End="174.171419517115,-18.1169934703425" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="38.8943230398074,-5.43655289532472,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Creating The Fact Table.Paths[Lookup Match Output3]"
+          TopLeft="650.947579093334,258.674508433833">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.8142857767114,88.7758164593812"
+              Start="0,0"
+              End="97.8142857767114,81.2758164593812">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.6078912351889" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.6078912351889"
+                    Point2="0,52.6078912351889"
+                    Point3="4,52.6078912351889" />
+                  <mssgle:LineSegment
+                    End="93.8142857767114,52.6078912351889" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.8142857767114,52.6078912351889"
+                    Point2="97.8142857767114,52.6078912351889"
+                    Point3="97.8142857767114,56.6078912351889" />
+                  <mssgle:LineSegment
+                    End="97.8142857767114,81.2758164593812" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.715756169605676,57.6078912351889,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Creating The Fact Table.Paths[Lookup Match Output2]"
+          TopLeft="860.530913393172,141.371567890034">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-209.583334299838,75.7029405437992"
+              Start="0,0"
+              End="-209.583334299838,68.2029405437992">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.8514702718996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.8514702718996"
+                    Point2="0,37.8514702718996"
+                    Point3="-4,37.8514702718996" />
+                  <mssgle:LineSegment
+                    End="-205.583334299838,37.8514702718996" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-205.583334299838,37.8514702718996"
+                    Point2="-209.583334299838,37.8514702718996"
+                    Point3="-209.583334299838,41.8514702718996" />
+                  <mssgle:LineSegment
+                    End="-209.583334299838,68.2029405437992" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-152.983053868669,42.8514702718996,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Creating The Fact Table.Paths[Lookup Match Output1]"
+          TopLeft="962.93328438716,280.233331422872">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102.63333178172,-71.7999994471906"
+              Start="0,0"
+              End="102.63333178172,-64.2999994471906">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-31.8999997235953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-31.8999997235953"
+                    Point2="0,-35.8999997235953"
+                    Point3="4,-35.8999997235953" />
+                  <mssgle:LineSegment
+                    End="98.6333317817198,-35.8999997235953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.6333317817198,-35.8999997235953"
+                    Point2="102.63333178172,-35.8999997235953"
+                    Point3="102.63333178172,-39.8999997235953" />
+                  <mssgle:LineSegment
+                    End="102.63333178172,-64.2999994471906" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="3.12527917210989,-30.8999997235953,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Creating The Fact Table.Paths[Lookup Match Output]"
+          TopLeft="703.780913164038,58.5127448648355">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.3500002291345,62.0588230251986"
+              Start="0,0"
+              End="84.8500002291345,62.0588230251986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.1750001145672,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.1750001145672,0"
+                    Point2="46.1750001145672,0"
+                    Point3="46.1750001145672,4" />
+                  <mssgle:LineSegment
+                    End="46.1750001145672,58.0588230251986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.1750001145672,58.0588230251986"
+                    Point2="46.1750001145672,62.0588230251986"
+                    Point3="50.1750001145672,62.0588230251986" />
+                  <mssgle:LineSegment
+                    End="84.8500002291345,62.0588230251986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-2.01638660418276,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Creating The Fact Table.Paths[Derived Column Output]"
+          TopLeft="1064.74994802422,166.833331975681">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-81.8999988713624"
+              Start="0,0"
+              End="0,-74.3999988713624">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-74.3999988713624" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Creating The Fact Table.Paths[OLE DB Source Output]"
+          TopLeft="176.157133000667,212.45228685824">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="464.423780163371,-133.139541993405"
+              Start="0,0"
+              End="464.423780163371,-125.639541993405">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-62.5697709967023" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-62.5697709967023"
+                    Point2="0,-66.5697709967023"
+                    Point3="4,-66.5697709967023" />
+                  <mssgle:LineSegment
+                    End="460.423780163371,-66.5697709967023" />
+                  <mssgle:CubicBezierSegment
+                    Point1="460.423780163371,-66.5697709967023"
+                    Point2="464.423780163371,-66.5697709967023"
+                    Point3="464.423780163371,-70.5697709967023" />
+                  <mssgle:LineSegment
+                    End="464.423780163371,-125.639541993405" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating The Fact Table\Hotel_Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating The Fact Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating The Fact Table\Joins">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating The Fact Table\Room_Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating The Fact Table\Guset_Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating The Fact Table\Agent_key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating The Fact Table\Date_Key">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

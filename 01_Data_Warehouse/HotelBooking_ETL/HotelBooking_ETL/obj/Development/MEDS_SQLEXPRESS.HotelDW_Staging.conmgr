@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="MEDS_SQLEXPRESS.HotelDW_Staging"
+  DTS:DTSID="{67F9B8DD-A2A7-4821-BF95-F5E159A19823}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=MEDS\SQLEXPRESS;Initial Catalog=HotelDW_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HotelBooking_ETL-{67F9B8DD-A2A7-4821-BF95-F5E159A19823}MEDS\SQLEXPRESS.HotelDW_Staging;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
